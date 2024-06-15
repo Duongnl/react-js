@@ -18,6 +18,7 @@ class ChildComponent extends React.Component {
         })
     }
 
+    
     render() {
         let { arrJobs } = this.props
         let { showJobs } = this.state
