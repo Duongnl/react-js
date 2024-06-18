@@ -4,13 +4,13 @@ class AddComponent extends React.Component {
 
         // bien global
         state = {
-            titleJob: '',
+            title: '',
             salary: '',
         }
 
-    handleChangTitleJob = (event) => {
+    handleChangTitle = (event) => {
         this.setState({
-            titleJob: event.target.value
+            title: event.target.value
 
         })
     }
@@ -23,8 +23,14 @@ class AddComponent extends React.Component {
     }
 
     handleSubmit = () => {
-        alert("Hello")
-        console.log(">>> check data input", this.state)
+     
+        let { addNewJob } = this.props
+        addNewJob({
+            id: Math.floor(Math.random() * 1000),
+            title : this.state.title,
+            salary : this.state.salary
+        })
+
     }
 
     render() {
@@ -32,8 +38,8 @@ class AddComponent extends React.Component {
             <>
                 <form>
                     <label htmlFor="fname">Job title:</label><br />
-                    <input type="text" value={this.state.titleJob}
-                        onChange={(event) => this.handleChangTitleJob(event)}
+                    <input type="text" value={this.state.title}
+                        onChange={(event) => this.handleChangTitle(event)}
                     /><br />
 
                     <label htmlFor="lname">Salary :</label><br />

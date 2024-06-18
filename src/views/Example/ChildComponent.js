@@ -18,6 +18,11 @@ class ChildComponent extends React.Component {
         })
     }
 
+    handelDelete = (id) => {
+       let {deleteJob} = this.props
+       deleteJob(id)
+    }
+
     
     render() {
         let { arrJobs } = this.props
@@ -42,7 +47,9 @@ class ChildComponent extends React.Component {
                                         if (item.salary >= 500) {
                                             return (
                                                 <div key={item.id} >
-                                                    {item.title} - {item.salary} $
+                                                    {item.title} - {item.salary} <span><button
+                                                    onClick={() => this.handelDelete(item.id)}
+                                                    >X</button></span>
                                                 </div>
                                             )
                                         }

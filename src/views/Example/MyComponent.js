@@ -11,14 +11,30 @@ class MyComponent extends React.Component {
             { id: 'abcjob3', title: 'Project manager', salary: '1000' }
         ]
     }
+    
+    addNewJob = (job) => {
+        this.setState ({
+            arrJobs: [...this.state.arrJobs, job]
+        })
+    }
+
+    deleteJob = (id) => {  
+
+        this.setState ({
+            arrJobs: this.state.arrJobs.filter(job => job.id != id)
+        })
+    }
 
     render() {
-        console.log('>>> call render : ', this.state)
         return (
             <>
-                <AddComponent/>
+                <AddComponent
+                addNewJob = {this.addNewJob}
+               
+                />
                 <ChildComponent
                     arrJobs={this.state.arrJobs}
+                    deleteJob = {this.deleteJob}
                 />
             </>
         )
